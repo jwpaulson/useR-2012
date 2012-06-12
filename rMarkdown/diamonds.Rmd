@@ -1,0 +1,27 @@
+Diamond Pricing
+========================================================
+
+Showing diamond prices with **R Markdown**.
+
+```{r setup, echo=FALSE, eval=TRUE}
+source("~/Desktop/other/formatPlot.R")
+```
+
+```{r diamondPlot, fig.width=7, fig.height=6}
+library(ggplot2)
+
+summary(diamonds)
+
+summary(diamonds$price)
+aveSize <- round(mean(diamonds$carat), 4)
+clarity <- levels(diamonds$clarity)
+
+p <- qplot(carat, price,
+           data=diamonds, color=clarity,
+           xlab="Carat", ylab="Price",
+           main="Diamond Pricing")
+
+format.plot(plot=p, size=23)
+
+```
+
